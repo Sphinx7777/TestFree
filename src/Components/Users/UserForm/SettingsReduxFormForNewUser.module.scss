@@ -1,15 +1,17 @@
 .settingsFormWrapper {
-	background: linear-gradient(to top left,white, black);
+	background: linear-gradient(to top left, white, black);
 	color: white;
 	margin: 0 auto;
+
 	.settingsForm {
-margin: 0 auto;
-.sendBtns {
+		margin: 0 auto;
 
-	.sendBtn {
-padding: 5px;
+		.sendBtns {
 
-	}
-}
+			.sendBtn {
+				padding: 5px;
+
+			}
+		}
 	}
 }

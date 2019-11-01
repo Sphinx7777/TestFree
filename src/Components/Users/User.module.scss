@@ -18,9 +18,11 @@
 		cursor: pointer;
 		max-width: 30%;
 		padding: 0 0.5em;
+
 		&:hover {
-			background: linear-gradient(to top left,white, black);
+			background: linear-gradient(to top left, white, black);
 		}
+
 		&:active {
 			border-top: 1px solid black;
 			border-radius: 0.5rem;
@@ -42,16 +44,14 @@
 		border-top: 1px solid white;
 		border-radius: 0.5rem;
 		border-bottom: 1px solid white;
-margin-top: 1rem;
-display: flex;
+		margin-top: 1.5rem;
+		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
 
 		.userPhoto {
-text-align: center;
-
-
+			text-align: center;
 
 
 			.photo {
@@ -62,15 +62,18 @@ text-align: center;
 				margin-bottom: 0.5rem;
 
 			}
+
 			.closeUserShow {
 				border-radius: 0.3rem;
 				outline: none;
 				padding: 5px;
 				background: linear-gradient(to top left, red, white);
 				cursor: pointer;
+
 				&:hover {
-					background: linear-gradient(to top left,white, red);
+					background: linear-gradient(to top left, white, red);
 				}
+
 				&:active {
 					border: 1px solid white;
 				}
@@ -83,7 +86,7 @@ text-align: center;
 			flex-grow: 2;
 
 
-			.contactItem,.userName {
+			.contactItem, .userName {
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: center;
@@ -96,6 +99,7 @@ text-align: center;
 				outline: none;
 				text-decoration: none;
 				color: white;
+
 				&:last-child {
 					border-bottom: none;
 				}
@@ -109,14 +113,16 @@ text-align: center;
 				}
 
 			}
+
 			@media screen and (max-width: 532px) {
-order: 4;
+				order: 4;
 			}
 
 		}
+
 		.userAge {
 			display: inline-block;
-		text-align: center;
+			text-align: center;
 			padding: 0 1rem;
 
 
@@ -125,6 +131,7 @@ order: 4;
 				max-width: 100%;
 				margin: 1rem auto;
 			}
+
 			.delUser {
 				text-align: center;
 				border-radius: 0.3rem;
@@ -132,15 +139,18 @@ order: 4;
 				padding: 5px;
 				background: linear-gradient(to top left, red, white);
 				cursor: pointer;
+
 				&:hover {
-					background: linear-gradient(to top left,white, red);
+					background: linear-gradient(to top left, white, red);
 				}
+
 				&:active {
 					border: 1px solid white;
 				}
 			}
 		}
 	}
+
 	.userTitle {
 		@extend .addUser;
 		max-width: 100%;
@@ -149,6 +159,7 @@ order: 4;
 			@extend .addUserImg;
 			margin: 0.5rem 2rem;
 		}
+
 		.userTitleName {
 			flex-grow: 2;
 		}

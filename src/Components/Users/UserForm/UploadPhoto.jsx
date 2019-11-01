@@ -2,39 +2,32 @@ import React, {useState} from 'react';
 import s from './UploadPhoto.module.scss';
 
 
+const UploadPhoto = ({setPhoto}) => {
 
-const UploadPhoto = (props) => {
+	let [newPhoto, setNewPhoto] = useState(null);
 
-	let [photo, setPhoto] = useState(null);
-
-	let setNewPhoto = (e) => {
+	let setUserPhoto = (e) => {
 		let formData = new FormData();
-		formData.append('image', e.currentTarget.files[0]);
-		setPhoto(formData);
+		formData.append('PhotoUrl', e.currentTarget.files[0]);
+		setNewPhoto(formData);
 	};
-
 	let sentPhoto = () => {
-		props.onSubmit(photo);
-		setPhoto(null);
+		setPhoto(newPhoto);
+		setNewPhoto(null);
 	};
-	if(props.uploadPhotos) {
-		setTimeout(()=>props.setUploadPhoto(null),5000)
-		}
 
 	return (
 		<div className={s.uploadPhotoWrapper}>
-			<span>Upload user photo</span>
-			<div  className={s.uploadPhoto}>
+			<span>Загрузить фото</span>
+			<div className={s.uploadPhoto}>
 				<input
 					name='image'
 					type='file'
-					onChange={setNewPhoto}
+					onChange={(e) => setUserPhoto(e)}
 				/>
 				<div className={s.sendPhotoBtn}>
-					<button  className={s.sendPhoto} onClick={sentPhoto} disabled={!photo }>Upload photo</button>
+					<button className={s.sendPhoto} onClick={sentPhoto} disabled={!newPhoto}>Upload photo</button>
 				</div>
-				{props.uploadPhotos ? <div className={s.uploadPhotoFinished}>Фото успешно загружено</div>
-					:''}
 			</div>
 		</div>
 	)

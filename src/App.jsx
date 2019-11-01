@@ -1,22 +1,38 @@
 import React, {Component} from 'react';
 import s from './App.module.scss';
-import {Users} from "./Components/Users/Users";
+
 import {connect} from "react-redux";
-import {setToggleShowUserStatus,setUserEditMode,setDeleteUser} from "./Components/Redux/usersReducer";
+import {
+	setToggleShowUserStatus, setUserEditMode, setDeleteUser, addNewUser,
+	setChangeUserContacts, setChangeNewDateOfBirth, setEditMode
+}
+	from "./Components/Redux/usersReducer";
+import {User} from "./Components/Users/User";
 
 class App extends Component {
+
 	render() {
+		const {
+			users, setEditMode, openEditMode, setChangeNewDateOfBirth,
+			setToggleShowUserStatus, setChangeUserContacts, setUserEditMode,
+			setDeleteUser, addNewUser
+		} = this.props;
+
 		return (
 			<div className={s.app}>
-				<Users
-					users={this.props.users}
-					setToggleShowUserStatus={this.props.setToggleShowUserStatus}
-					setUserEditMode={this.props.setUserEditMode}
-					setDeleteUser={this.props.setDeleteUser}
-				/>
+				<User {...{
+					users, setEditMode, openEditMode, setChangeNewDateOfBirth,
+					setToggleShowUserStatus, setChangeUserContacts, setUserEditMode, setDeleteUser, addNewUser
+				}}/>
 			</div>
 		);
 	}
 }
 
-export default connect(state=>({users:state.usersPage.users}),{setToggleShowUserStatus,setUserEditMode,setDeleteUser})(App);
+export default connect(state => ({
+	users: state.usersPage.users,
+	openEditMode: state.usersPage.openEditMode,
+}), {
+	setToggleShowUserStatus, setChangeUserContacts, setEditMode,
+	addNewUser, setUserEditMode, setDeleteUser, setChangeNewDateOfBirth
+})(App);

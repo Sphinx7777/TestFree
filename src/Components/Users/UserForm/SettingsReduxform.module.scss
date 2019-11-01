@@ -1,16 +1,31 @@
 .settingsFormWrapper {
-	background: linear-gradient(to top left,white, black);
-position: absolute;
+	background: linear-gradient(to top left, white, black);
+	position: absolute;
 	right: 0;
-	top:0;
+	top: 0;
 	color: white;
+
+
+	.closeForm {
+		color: red;
+		padding: 0 6px;
+		cursor: pointer;
+		border: 1px solid red;
+		border-radius: 100%;
+		outline: none;
+		position: absolute;
+		bottom: 0.1rem;
+		right: 0.1rem;
+	}
+
 	.settingsForm {
 
-.sendBtns {
+		.sendBtns {
+			text-align: left;
 
-	.sendBtn {
+			.sendBtn {
 
-	}
-}
+			}
+		}
 	}
 }
