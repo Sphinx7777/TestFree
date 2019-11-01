@@ -1,0 +1,50 @@
+.uploadPhotoWrapper {
+	color: white;
+	background-color: rgba(0, 0, 0, .6);
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.5rem;
+	outline: none;
+	margin: 0.3rem;
+	position: absolute;
+	left: 12%;
+	bottom: 6%;
+
+	span {
+		margin: 0 auto;
+		font-weight: bold;
+		font-size: 1.2rem;
+	}
+
+	.uploadPhoto {
+		display: flex;
+		flex-direction: column;
+
+		.uploadPhotoFinished {
+			padding: 0.2rem;
+			background-color: rgba(0, 250, 0, .6);
+			text-align: center;
+			border-radius: 0.5rem;
+			outline: none;
+			margin: 0.3rem 0.3rem 0 0.3rem;
+		}
+
+		input {
+			padding: 0.5rem;
+		}
+
+		.sendPhotoBtn {
+			padding: 0.5rem;
+			margin: 0.5rem auto;
+
+
+			.sendPhoto {
+				padding: 0.25rem 1rem;
+				margin: 1rem auto;
+				border-radius: 0.3rem;
+				outline: none;
+				cursor: pointer;
+			}
+		}
+	}
+}

@@ -1,0 +1,157 @@
+.usersWrapper {
+	padding: 1rem 2%;
+	max-width: 100%;
+	color: white;
+	text-align: center;
+	overflow: auto;
+
+	.addUser {
+		background: linear-gradient(to top left, black, white);
+		border-top: 1px solid white;
+		border-radius: 0.5rem;
+		border-bottom: 1px solid white;
+		margin-top: 1rem;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		align-items: center;
+		cursor: pointer;
+		max-width: 30%;
+		padding: 0 0.5em;
+		&:hover {
+			background: linear-gradient(to top left,white, black);
+		}
+		&:active {
+			border-top: 1px solid black;
+			border-radius: 0.5rem;
+			border-bottom: 1px solid black;
+		}
+
+		.addUserImg {
+			margin: 0.5rem;
+			max-width: 3rem;
+			border-radius: 0.5rem;
+			outline: none;
+		}
+	}
+
+
+	.user {
+		position: relative;
+		background: linear-gradient(to top left, black, white);
+		border-top: 1px solid white;
+		border-radius: 0.5rem;
+		border-bottom: 1px solid white;
+margin-top: 1rem;
+display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		.userPhoto {
+text-align: center;
+
+
+
+
+			.photo {
+				display: block;
+				max-width: 8rem;
+				border-radius: 0.5rem;
+				outline: none;
+				margin-bottom: 0.5rem;
+
+			}
+			.closeUserShow {
+				border-radius: 0.3rem;
+				outline: none;
+				padding: 5px;
+				background: linear-gradient(to top left, red, white);
+				cursor: pointer;
+				&:hover {
+					background: linear-gradient(to top left,white, red);
+				}
+				&:active {
+					border: 1px solid white;
+				}
+			}
+		}
+
+		.userContacts {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 2;
+
+
+			.contactItem,.userName {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+				max-width: 100%;
+				padding: 1rem 0.5rem;
+				border-bottom: 1px solid white;
+				border-bottom-right-radius: 0.5rem;
+				border-bottom-left-radius: 0.5rem;
+				outline: none;
+				text-decoration: none;
+				color: white;
+				&:last-child {
+					border-bottom: none;
+				}
+
+				.contactImg {
+					padding-right: 0.5rem;
+					max-width: 2rem;
+					border-radius: 0.2rem;
+					outline: none;
+
+				}
+
+			}
+			@media screen and (max-width: 532px) {
+order: 4;
+			}
+
+		}
+		.userAge {
+			display: inline-block;
+		text-align: center;
+			padding: 0 1rem;
+
+
+			span {
+				display: block;
+				max-width: 100%;
+				margin: 1rem auto;
+			}
+			.delUser {
+				text-align: center;
+				border-radius: 0.3rem;
+				outline: none;
+				padding: 5px;
+				background: linear-gradient(to top left, red, white);
+				cursor: pointer;
+				&:hover {
+					background: linear-gradient(to top left,white, red);
+				}
+				&:active {
+					border: 1px solid white;
+				}
+			}
+		}
+	}
+	.userTitle {
+		@extend .addUser;
+		max-width: 100%;
+
+		.userTitlePhoto {
+			@extend .addUserImg;
+			margin: 0.5rem 2rem;
+		}
+		.userTitleName {
+			flex-grow: 2;
+		}
+	}
+
+}
