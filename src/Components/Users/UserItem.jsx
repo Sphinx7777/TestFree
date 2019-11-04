@@ -9,7 +9,7 @@ import {UserAge} from "./UserAge";
 
 
 export const UserItem =({
-													 u, setEditMode, openEditMode, changePhoto, setChangePhoto, photo,
+													 u, setEditMode, openEditMode,  setChangePhoto,changePhoto, photo,
 													 setChangeNewDateOfBirth, setPhoto, setToggleShowUserStatus,
 													 setUserEditMode, onSubmit, setDeleteUser
 												 }) => {
@@ -34,7 +34,7 @@ export const UserItem =({
 				<UserContacts {...{u, openEditMode, setUserEditMode}}/>
 				<UserAge {...{u, setEditMode, openEditMode, setDeleteUser,showNewCalendar, setShowNewCalendar}} />
 				</>
-			{changePhoto && <UploadPhoto {...{photo, setPhoto}}/>}
+			{changePhoto && <UploadPhoto {...{photo, setPhoto, openEditMode, setChangePhoto}}/>}
 			{showNewCalendar &&
 			<NewDateOfBirthCalendar
 				setEditMode={setEditMode}

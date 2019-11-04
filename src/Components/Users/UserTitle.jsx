@@ -4,6 +4,7 @@ import avatar from "./../images/avatar.ico";
 
 export const UserTitle =({u,openEditMode, setToggleShowUserStatus}) => {
 
+
 	return (
 		<div className={s.userTitle}
 					 onClick={() => !openEditMode && setToggleShowUserStatus(u.id)}>
@@ -15,3 +16,4 @@ export const UserTitle =({u,openEditMode, setToggleShowUserStatus}) => {
 			</div>
 	)
 };
+//u.photoUrl && typeof u.photoUrl !== "object" ? u.photoUrl : avatar

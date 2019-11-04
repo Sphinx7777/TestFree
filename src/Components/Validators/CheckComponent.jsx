@@ -13,7 +13,7 @@ export const TextAndNumber = value =>
 		: undefined;
 export const phoneNumber = value =>
 	value && !/^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/i.test(value)
-		? 'Invalid number, must be 10 digits'
+		? 'Invalid number, must be min 10 digits'
 		: undefined;
 export const alphaNumeric = value =>
 	value && /[^a-zA-Z0-9 ]/i.test(value)
