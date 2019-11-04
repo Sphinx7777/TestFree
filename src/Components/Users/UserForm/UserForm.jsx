@@ -1,11 +1,11 @@
 import React from 'react';
-import s from './SettingsReduxform.module.scss';
+import s from './UserForm.module.scss';
 import {Field, reduxForm} from "redux-form";
 import {InputComponent} from "./../../Validators/ValidatorsComponents";
 import {Email, emptyField, phoneNumber, TextAndNumber,} from "../../Validators/CheckComponent";
 
 
-const SettingsReduxForm = (props) => {
+const UserForm = (props) => {
 	const {handleSubmit, pristine, submitting, setUserEditMode, u} = props;
 
 	return (
@@ -46,4 +46,4 @@ const SettingsReduxForm = (props) => {
 	)
 };
 
-export default reduxForm({form: 'settingsForm'})(SettingsReduxForm)
+export default reduxForm({form: 'settingsForm'})(UserForm)

@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import s from './App.module.scss';
-
 import {connect} from "react-redux";
 import {
 	setToggleShowUserStatus, setUserEditMode, setDeleteUser, addNewUser,
@@ -9,7 +8,7 @@ import {
 	from "./Components/Redux/usersReducer";
 import {User} from "./Components/Users/User";
 
-class App extends Component {
+class App extends React.PureComponent {
 
 	render() {
 		const {
@@ -22,7 +21,8 @@ class App extends Component {
 			<div className={s.app}>
 				<User {...{
 					users, setEditMode, openEditMode, setChangeNewDateOfBirth,
-					setToggleShowUserStatus, setChangeUserContacts, setUserEditMode, setDeleteUser, addNewUser
+					setToggleShowUserStatus, setChangeUserContacts, setUserEditMode,
+					setDeleteUser, addNewUser
 				}}/>
 			</div>
 		);

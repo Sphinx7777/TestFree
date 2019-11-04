@@ -1,15 +1,18 @@
 import React from 'react';
-import s from './SettingsReduxFormForNewUser.module.scss';
+import s from './FormForNewUser.module.scss';
 import {Field, reduxForm} from "redux-form";
 import {InputComponent} from "./../../Validators/ValidatorsComponents";
 import {Email, emptyField, maxSize, phoneNumber, TextAndNumber} from "../../Validators/CheckComponent";
 import {NewCalendar} from "../../Others/Calendar/NewCalendar";
 
 
-const SettingsReduxFormForNewUser = (props) => {
+const FormForNewUser = (props) => {
 
-	const {handleSubmit, pristine, submitting, onSubmitNewUser, setDateOfBirth, setShowCalendar, showCalendar, dateOfBirth} = props;
-	const dateBirth = dateOfBirth.toLocaleDateString();
+	const {
+		handleSubmit, pristine, submitting, onSubmitNewUser,
+		setDateOfBirth, setShowCalendar, showCalendar, dateOfBirth
+	} = props;
+
 	return (
 		<div className={s.settingsFormWrapper}>
 
@@ -50,7 +53,7 @@ const SettingsReduxFormForNewUser = (props) => {
 					/>
 					<div onDoubleClick={() => setShowCalendar(true)}>
 						<div>Дата рождения</div>
-						<div>{dateBirth}</div>
+						<div>{dateOfBirth && dateOfBirth.toString().slice(0, 10)}</div>
 					</div>
 					<div className={s.sendBtns}>
 						<button className={s.sendBtn} type="submit" disabled={pristine || submitting}>Добавить</button>
@@ -62,4 +65,4 @@ const SettingsReduxFormForNewUser = (props) => {
 	)
 };
 
-export default reduxForm({form: 'settingsFormForNewUser'})(SettingsReduxFormForNewUser)
+export default reduxForm({form: 'settingsFormForNewUser'})(FormForNewUser)

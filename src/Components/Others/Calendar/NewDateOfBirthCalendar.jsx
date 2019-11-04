@@ -15,7 +15,7 @@ export const NewDateOfBirthCalendar = (
 				</div>
 				<Calendar
 					maxDate={new Date()}
-					onChange={(date) => setDateOfBirth(date)}
+					onChange={(date) => setDateOfBirth(date.toLocaleString())}
 					value={new Date()}
 				/>
 				<div className={s.closeCalendar} onClick={() => {

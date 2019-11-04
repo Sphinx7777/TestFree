@@ -37,7 +37,6 @@
 		}
 	}
 
-
 	.user {
 		position: relative;
 		background: linear-gradient(to top left, black, white);
@@ -85,7 +84,6 @@
 			flex-direction: column;
 			flex-grow: 2;
 
-
 			.contactItem, .userName {
 				display: flex;
 				flex-wrap: wrap;
@@ -109,9 +107,7 @@
 					max-width: 2rem;
 					border-radius: 0.2rem;
 					outline: none;
-
 				}
-
 			}
 
 			@media screen and (max-width: 532px) {
@@ -154,6 +150,7 @@
 	.userTitle {
 		@extend .addUser;
 		max-width: 100%;
+		margin-top: 2rem;
 
 		.userTitlePhoto {
 			@extend .addUserImg;

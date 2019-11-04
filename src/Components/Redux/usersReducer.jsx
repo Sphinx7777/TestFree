@@ -1,3 +1,5 @@
+import {load} from 'redux-localstorage-simple';
+
 const SET_SHOW_USER_STATUS = '/usersReducer///SET_SHOW_USER_STATUS';
 const CHANGE_USER_CONTACTS = '/usersReducer///CHANGE_USER_CONTACTS';
 const SET_USER_EDIT_MODE = '/usersReducer///SET_USER_EDIT_MODE';
@@ -6,42 +8,49 @@ const ADD_NEW_USER = '/usersReducer///ADD_NEW_USER';
 const SET_NEW_DATE_OF_BIRTH = '/usersReducer///SET_NEW_DATE_OF_BIRTH';
 const EDIT_MODE = '/usersReducer///EDIT_MODE';
 
+const dateOfBirth = new Date().toLocaleString();
 
-let initialState = {
-	users: [
-		{
-			id: 1,
-			name: 'Первый',
-			email: 'aaa@gmail.com',
-			dateOfBirth: new Date(),
-			photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzkycCUttCUGZTFQNTtUxSzTg0188XLm0hVDq9fromUafGUhzl&s',
-			phone: 1111111111,
-			show: false,
-			editMode: false
-		},
-		{
-			id: 2,
-			name: 'Второй',
-			email: 'bbb@gmail.com',
-			dateOfBirth: new Date(),
-			photoUrl: 'http://funny-photo.s3.amazonaws.com/preview/navi_avatar/avatar-grinning-man-face.jpg',
-			phone: 2222222222,
-			show: false,
-			editMode: false
-		},
-		{
-			id: 3,
-			name: 'Третий',
-			email: 'ccc@gmail.com',
-			dateOfBirth: new Date(),
-			photoUrl: null,
-			phone: 3333333333,
-			show: false,
-			editMode: false
-		},
-	],
-	openEditMode: false
-};
+let data = load({namespace: 'users'});
+let initialState = data.usersPage;
+
+if (!initialState || !initialState.users || !initialState.users.length) {
+	initialState = {
+		users: [
+			{
+				id: 1,
+				name: 'Первый',
+				email: 'aaa@gmail.com',
+				dateOfBirth: dateOfBirth,
+				photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzkycCUttCUGZTFQNTtUxSzTg0188XLm0hVDq9fromUafGUhzl&s',
+				phone: 1111111111,
+				show: false,
+				editMode: false
+			},
+			{
+				id: 2,
+				name: 'Второй',
+				email: 'bbb@gmail.com',
+				dateOfBirth: dateOfBirth,
+				photoUrl: 'http://funny-photo.s3.amazonaws.com/preview/navi_avatar/avatar-grinning-man-face.jpg',
+				phone: 2222222222,
+				show: false,
+				editMode: false
+			},
+			{
+				id: 3,
+				name: 'Третий',
+				email: 'ccc@gmail.com',
+				dateOfBirth: dateOfBirth,
+				photoUrl: null,
+				phone: 3333333333,
+				show: false,
+				editMode: false
+			},
+		],
+		openEditMode: false
+	}
+}
+
 
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -103,7 +112,7 @@ const usersReducer = (state = initialState, action) => {
 		}
 		case ADD_NEW_USER: {
 			return {
-				...state, ...state.users.unshift(action.user),openEditMode: false
+				...state, ...state.users.unshift(action.user), openEditMode: false
 			}
 		}
 		case EDIT_MODE: {
@@ -117,20 +126,22 @@ const usersReducer = (state = initialState, action) => {
 };
 
 export const setToggleShowUserStatus = (id) => ({type: SET_SHOW_USER_STATUS, id});
+export const setChangeNewDateOfBirth = (date) => ({type: SET_NEW_DATE_OF_BIRTH, ...date});
 export const setChangeUserContacts = (formData) => ({type: CHANGE_USER_CONTACTS, ...formData});
 export const setUserEditMode = (id) => ({type: SET_USER_EDIT_MODE, id});
 export const setDeleteUser = (id) => ({type: SET_DELETE_USER, id});
 export const addNewUser = (user) => ({type: ADD_NEW_USER, user});
-export const setChangeNewDateOfBirth = (date) => ({type: SET_NEW_DATE_OF_BIRTH, ...date});
 export const setEditMode = () => ({type: EDIT_MODE});
 
 
-/*export const setChangeNewDateOfBirth = (date) => {
+/*
+export const addNewUser = (date) => {
 	return async (dispatch) => {
 		await dispatch(setEditMode());
 		await dispatch(changeNewDateOfBirth(date));
 		await dispatch(setEditMode());
-}};*/
+}};
+*/
 
 
 export default usersReducer;
