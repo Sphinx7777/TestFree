@@ -7,8 +7,6 @@ const UploadPhoto = ({setPhoto,setChangePhoto}) => {
 	let [newPhoto, setNewPhoto] = useState(null);
 
 	let setUserPhoto = (e) => {
-		/*let formData = new FormData();
-		formData.append('PhotoUrl', e.currentTarget.files[0]);*/
 		setNewPhoto(e.currentTarget.files[0]);
 	};
 	let sentPhoto = () => {

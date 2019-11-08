@@ -6,7 +6,7 @@ import {Email, emptyField, phoneNumber, TextAndNumber,} from "../../Validators/C
 
 
 const UserForm = (props) => {
-	const {handleSubmit, pristine, submitting, setUserEditMode, u} = props;
+	const {handleSubmit, pristine, submitting, setUserEditMode, user} = props;
 
 	return (
 		<div className={s.settingsFormWrapper}>
@@ -41,7 +41,7 @@ const UserForm = (props) => {
 					</div>
 				</div>
 			</form>
-			<span className={s.closeForm} onClick={() => setUserEditMode(u.id)}>X</span>
+			<span className={s.closeForm} onClick={() => setUserEditMode(user.id)}>X</span>
 		</div>
 	)
 };

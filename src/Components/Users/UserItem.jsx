@@ -8,8 +8,8 @@ import {UserContacts} from "./UserContacts";
 import {UserAge} from "./UserAge";
 
 
-export const UserItem =({
-													 u, setEditMode, openEditMode,  setChangePhoto,changePhoto, photo,
+export const UserItem = ({
+													 user, setEditMode, openEditMode, setChangePhoto, changePhoto, photo,
 													 setChangeNewDateOfBirth, setPhoto, setToggleShowUserStatus,
 													 setUserEditMode, onSubmit, setDeleteUser
 												 }) => {
@@ -26,23 +26,26 @@ export const UserItem =({
 			<>
 				<div className={s.userPhoto}>
 					<img onDoubleClick={() => !openEditMode && setChangePhoto(!changePhoto)} className={s.photo}
-							 src={u.photoUrl && typeof u.photoUrl !== "object" ? u.photoUrl : avatar} alt=""/>
-					<span className={s.closeUserShow} onClick={() => !openEditMode && setToggleShowUserStatus(u.id)}>
+							 title='DoubleClick for edit'
+							 src={user.photoUrl && typeof user.photoUrl !== "object" ? user.photoUrl : avatar} alt=""/>
+					<span className={s.closeUserShow} onClick={() => !openEditMode && setToggleShowUserStatus(user.id)}>
 						Свернуть
 					</span>
 				</div>
-				<UserContacts {...{u, openEditMode, setUserEditMode}}/>
-				<UserAge {...{u, setEditMode, openEditMode, setDeleteUser,showNewCalendar, setShowNewCalendar}} />
-				</>
+				<UserContacts {...{user, openEditMode, setUserEditMode}}/>
+				<UserAge {...{user, setEditMode, openEditMode, setDeleteUser, showNewCalendar, setShowNewCalendar}} />
+			</>
 			{changePhoto && <UploadPhoto {...{photo, setPhoto, openEditMode, setChangePhoto}}/>}
 			{showNewCalendar &&
-			<NewDateOfBirthCalendar
-				setEditMode={setEditMode}
-				id={u.id}
-				setNewDateOfBirth={setNewDateOfBirth}
-				setShowCalendar={setShowNewCalendar}
-				setDateOfBirth={setNewDate}/>}
-			{u.editMode && <SettingsReduxForm u={u} setUserEditMode={setUserEditMode} onSubmit={onSubmit}/>}
+			<NewDateOfBirthCalendar {...{
+				id: user.id,
+				setEditMode,
+				setNewDateOfBirth,
+				setShowCalendar: setShowNewCalendar,
+				setDateOfBirth: setNewDate
+			}}/>
+			}
+			{user.editMode && <SettingsReduxForm user={user} setUserEditMode={setUserEditMode} onSubmit={onSubmit}/>}
 		</>
 	)
 };

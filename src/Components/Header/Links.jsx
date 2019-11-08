@@ -11,12 +11,11 @@ export const Links = () => {
 
 	return (
 		<>
-			<div>
-				<a className={s.link} target='_blank' rel='noopener noreferrer'
+			<a className={s.link} target='_blank' rel='noopener noreferrer'
 					 href="https://sphinx7777.github.io/testFree_2">
 					<img className={s.linkImg} src={test} alt="Test 1"/><span className={s.linkTitle}>Test_2</span>
 				</a>
-			</div>
+
 			<div className={s.LinkWrapper}>
 				<div className={s.linkLineWrapper}>
 					<a className={s.link} target='_blank' rel='noopener noreferrer'

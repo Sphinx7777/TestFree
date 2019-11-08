@@ -7,10 +7,10 @@ export const Header = () => {
 
 	return (
 		<>
-		<div className={s.footerWrapper}>
-			<footer className={s.footer}>
+		<div className={s.headerWrapper}>
+			<header className={s.header}>
 				<Links />
-			</footer>
+			</header>
 		</div>
 			</>
 	)

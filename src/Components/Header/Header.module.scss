@@ -8,7 +8,7 @@ $shad: 0 1px 4px rgba(0, 0, 0, .3),
 inset 0 0 40px rgba(0, 0, 0, .1);
 
 
-.footerWrapper {
+.headerWrapper {
 	@include bRad (1rem);
 	margin: 0 auto;
 	background-color: transparent;
@@ -25,7 +25,7 @@ border-bottom: 5px solid black;
 		}
 	}
 
-	.footer {
+	.header {
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;

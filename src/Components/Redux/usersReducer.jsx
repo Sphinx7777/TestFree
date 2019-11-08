@@ -134,14 +134,12 @@ export const addNewUser = (user) => ({type: ADD_NEW_USER, user});
 export const setEditMode = () => ({type: EDIT_MODE});
 
 
-/*
-export const addNewUser = (date) => {
-	return async (dispatch) => {
-		await dispatch(setEditMode());
-		await dispatch(changeNewDateOfBirth(date));
-		await dispatch(setEditMode());
-}};
-*/
+// export const addNewUser = (date) => {
+// 	return async (dispatch) => {
+//
+// 		await dispatch(setEditMode());
+// 		await dispatch(setEditMode());
+// }};
 
 
 export default usersReducer;

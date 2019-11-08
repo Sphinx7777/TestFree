@@ -3,11 +3,11 @@ import s from './User.module.scss';
 import {UserItem} from "./UserItem";
 import plus from "./../images/plus.ico";
 import arrow_left from "./../images/arrow_left.png";
-import SettingsReduxFormForNewUser from "./UserForm/FormForNewUser";
+import FormForNewUser from "./UserForm/FormForNewUser";
 import {UserTitle} from "./UserTitle";
 import {Header} from "../Header/Header";
 
-export const User =({
+export const User = ({
 											 users, setChangeNewDateOfBirth, openEditMode, setEditMode,
 											 setToggleShowUserStatus, setChangeUserContacts, setUserEditMode,
 											 setDeleteUser, addNewUser
@@ -40,58 +40,49 @@ export const User =({
 		setShowForm(false);
 	};
 
+	const setFormEditMode = () => {
+		setShowForm(!showForm);
+		setShowCalendar(true);
+		showForm ?
+			setEditMode(true)
+			:
+			setEditMode(false);
+	};
+
 
 	return (
 		<>
-			<Header />
-		<div className={s.usersWrapper}>
-			<div className={s.addUser} onClick={() => {
-				setShowForm(!showForm);
-				setShowCalendar(true);
-				showForm ?
-				setEditMode(true)
-					:
-					setEditMode(false)
-			}}><img className={s.addUserImg} src={!showForm ? plus : arrow_left} alt=""/>
-				<span>
+			<Header/>
+			<div className={s.usersWrapper}>
+				<div className={s.addUser} onClick={setFormEditMode}>
+					<img className={s.addUserImg}
+							 src={!showForm ? plus : arrow_left} alt=""
+					/>
+					<span>
 				{!showForm ? 'Добавить пользователя' : 'Отменить'}
 			</span>
+				</div>
+				{showForm && <FormForNewUser {...{
+					onSubmitNewUser, setDateOfBirth,
+					setShowCalendar, showCalendar, dateOfBirth
+				}}/>
+				}
+				{users && users.length && users.map(user =>
+					!user.show
+						?
+						<React.Fragment key={user.id}>
+							<UserTitle {...{user, openEditMode, setToggleShowUserStatus}}/>
+						</React.Fragment>
+						: <div className={s.user} key={user.id}>
+							<UserItem  {...{
+								user, setEditMode, openEditMode, setChangeNewDateOfBirth,
+								setShowForm, changePhoto, setChangePhoto, photo, setPhoto,
+								setToggleShowUserStatus, setUserEditMode, onSubmit, setDeleteUser
+							}}/>
+						</div>
+				)}
 			</div>
-			{showForm && <SettingsReduxFormForNewUser {...{
-				onSubmitNewUser, setDateOfBirth,
-				setShowCalendar, showCalendar, dateOfBirth
-			}}/>
-			}
-			{users && users.length && users.map(u =>
-				!u.show
-					?
-					<React.Fragment key={u.id}>
-					<UserTitle {...{u,openEditMode, setToggleShowUserStatus}}/>
-					</React.Fragment>
-					: <div className={s.user} key={u.id}>
-						<UserItem  {...{
-							u, setEditMode, openEditMode, setChangeNewDateOfBirth,
-							setShowForm, changePhoto, setChangePhoto, photo, setPhoto,
-							setToggleShowUserStatus, setUserEditMode, onSubmit, setDeleteUser
-						}}/>
-					</div>
-			)}
-		</div>
-			<div className={s.title} style={{textAlign:'left'}}><span >Добрый день.<br />
-				DoubleClick на имени открывает редактирование профиля.<br />
-				DoubleClick на дате рождения открывает редактирование даты рождения.<br />
-				DoubleClick на фото должен менять фото, но т.к. ранее я пользовался только чужими API
-				и никогда не работал с базами данных оставляя изучение бэка и node.js до момента трудоустройства паралельно
-				с работой то сохранять пока фото и данные пользователя кроме Locale storage некуда и поэтому временно все идет туда.
-				Соответственно фото не меняются т.к не достаются из storage. Освою mongoDB налажу круговорот.
-				Пока только пару часов посмотрел научился сохранять и получать простейшие типы обьектов.<br />
-				У меня свободны только выходные поэтому ждать неделю с отправкой и доводкой до кондиции смысла нет.<br />
-				Как пример работы с реал API, thunkMiddleware и пр. выше ссылка на проект социальной сети. Это мой основновной
-				учебный проект который я веду с нуля паралельно развитию бэка под него белорусским it-inkubatorom.<br />
-				Весь остальной функционал работает.<br />
-				Формы валидируются как написано в задании (кроме замены фото, до освоения mongoDB).<br />
-				Выше ссылка на второй тест, другие мои недавние проекты и репозиторий.
-			</span></div>
-			</>
+
+		</>
 	)
 };
