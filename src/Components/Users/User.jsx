@@ -21,9 +21,7 @@ export const User = (
 	const [photo, setPhoto] = useState(null);
 	const [dateOfBirth, setDateOfBirth] = useState(new Date().toLocaleString());
 
-	const onSubmit = (formData) => {
-		setChangeUserContacts(formData)
-	};
+	const onSubmit = formData => setChangeUserContacts(formData);
 
 	const onSubmitNewUser = ({name, email, phone, photoUrl = null}) => {
 
@@ -44,7 +42,8 @@ export const User = (
 	const setFormEditMode = () => {
 		setShowForm(!showForm);
 		setShowCalendar(true);
-		showForm ?
+		showForm
+			?
 			setEditMode(true)
 			:
 			setEditMode(false);
@@ -62,7 +61,11 @@ export const User = (
 							 alt=""
 					/>
 					<span>
-				{!showForm ? 'Добавить пользователя' : 'Отменить'}
+				{
+					!showForm
+						? 'Добавить пользователя'
+						: 'Отменить'
+				}
 			</span>
 				</div>
 				{showForm && <FormForNewUser {...
@@ -71,26 +74,27 @@ export const User = (
 						setShowCalendar, showCalendar, dateOfBirth
 					}}/>
 				}
-				{users && users.length && users.map(user =>
-					!user.show
-						?
-						<React.Fragment key={user.id}>
-							<UserTitle {...
-								{
-									user,
-									openEditMode,
-									setToggleShowUserStatus
-								}}/>
-						</React.Fragment>
-						: <div className={s.user} key={user.id}>
-							<UserItem  {...
-								{
-									user, setEditMode, openEditMode, setChangeNewDateOfBirth,
-									setShowForm, changePhoto, setChangePhoto, photo, setPhoto,
-									setToggleShowUserStatus, setUserEditMode, onSubmit, setDeleteUser
-								}}/>
-						</div>
-				)}
+				{
+					users && users.length && users.map(user =>
+						!user.show
+							?
+							<React.Fragment key={user.id}>
+								<UserTitle {...
+									{
+										user,
+										openEditMode,
+										setToggleShowUserStatus
+									}}/>
+							</React.Fragment>
+							: <div className={s.user} key={user.id}>
+								<UserItem  {...
+									{
+										user, setEditMode, openEditMode, setChangeNewDateOfBirth,
+										setShowForm, changePhoto, setChangePhoto, photo, setPhoto,
+										setToggleShowUserStatus, setUserEditMode, onSubmit, setDeleteUser
+									}}/>
+							</div>)
+				}
 			</div>
 			<div style={{textAlign: 'left'}}><span>Добрый день.<br/>
 				DoubleClick на имени открывает редактирование профиля.<br/>

@@ -8,6 +8,8 @@ import {Email, emptyField, phoneNumber, TextAndNumber,} from "../../Validators/C
 const UserForm = (props) => {
 	const {handleSubmit, pristine, submitting, setUserEditMode, user} = props;
 
+	const userEditMode = () => setUserEditMode(user.id);
+
 	return (
 		<div className={s.settingsFormWrapper}>
 			<form onSubmit={handleSubmit}>
@@ -36,7 +38,7 @@ const UserForm = (props) => {
 						component={InputComponent}
 						validate={[emptyField, phoneNumber]}
 					/>
-					<div className={s.sendBtns}>
+					<div className={s.sendBtnGroup}>
 						<button className={s.sendBtn}
 										type="submit"
 										disabled={pristine || submitting}>
@@ -46,7 +48,7 @@ const UserForm = (props) => {
 				</div>
 			</form>
 			<span className={s.closeForm}
-						onClick={() => setUserEditMode(user.id)}>
+						onClick={userEditMode}>
 				X
 			</span>
 		</div>

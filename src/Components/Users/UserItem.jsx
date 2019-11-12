@@ -25,12 +25,14 @@ export const UserItem = (
 		!openEditMode && setToggleShowUserStatus(user.id)
 	};
 
+	const toggleChangePhotoMode = () => !openEditMode && setChangePhoto(!changePhoto);
+
 	return (
 		<>
 			<>
 				<div className={s.userPhoto}>
 					<img className={s.photo}
-							 onDoubleClick={() => !openEditMode && setChangePhoto(!changePhoto)}
+							 onDoubleClick={toggleChangePhotoMode}
 							 title='DoubleClick for edit'
 							 src={user.photoUrl && typeof user.photoUrl !== "object"
 								 ? user.photoUrl
@@ -56,14 +58,15 @@ export const UserItem = (
 				{
 					photo, setPhoto, openEditMode, setChangePhoto
 				}}/>}
-			{showNewCalendar && <NewDateOfBirthCalendar {...
-				{
-					id: user.id,
-					setEditMode,
-					setNewDateOfBirth,
-					setShowCalendar: setShowNewCalendar,
-					setDateOfBirth: setNewDate
-				}}/>
+			{
+				showNewCalendar && <NewDateOfBirthCalendar {...
+					{
+						id: user.id,
+						setEditMode,
+						setNewDateOfBirth,
+						setShowCalendar: setShowNewCalendar,
+						setDateOfBirth: setNewDate
+					}}/>
 			}
 			{user.editMode && <SettingsReduxForm {...
 				{

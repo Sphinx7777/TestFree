@@ -133,13 +133,33 @@ const usersReducer = (state = initialState, action) => {
 	}
 };
 
-export const setToggleShowUserStatus = (id) => ({type: SET_SHOW_USER_STATUS, id});
-export const setChangeNewDateOfBirth = (date) => ({type: SET_NEW_DATE_OF_BIRTH, ...date});
-export const setChangeUserContacts = (formData) => ({type: CHANGE_USER_CONTACTS, ...formData});
-export const setUserEditMode = (id) => ({type: SET_USER_EDIT_MODE, id});
-export const setDeleteUser = (id) => ({type: SET_DELETE_USER, id});
-export const addNewUser = (user) => ({type: ADD_NEW_USER, user});
-export const setEditMode = () => ({type: EDIT_MODE});
+export const setToggleShowUserStatus = (id) => (
+	{type: SET_SHOW_USER_STATUS, id}
+	);
+
+export const setChangeNewDateOfBirth = (date) => (
+	{type: SET_NEW_DATE_OF_BIRTH, ...date}
+	);
+
+export const setChangeUserContacts = (formData) => (
+	{type: CHANGE_USER_CONTACTS, ...formData}
+	);
+
+export const setUserEditMode = (id) => (
+	{type: SET_USER_EDIT_MODE, id}
+	);
+
+export const setDeleteUser = (id) => (
+	{type: SET_DELETE_USER, id}
+	);
+
+export const addNewUser = (user) => (
+	{type: ADD_NEW_USER, user}
+	);
+
+export const setEditMode = () => (
+	{type: EDIT_MODE}
+	);
 
 
 export default usersReducer;
