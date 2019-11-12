@@ -3,7 +3,18 @@ import Calendar from 'react-calendar';
 import s from './NewCalendar.module.scss';
 
 
-export const NewCalendar = ({setDateOfBirth, setShowCalendar}) => {
+export const NewCalendar = (
+	{
+		setDateOfBirth, setShowCalendar
+	}) => {
+
+	const setNewDate = () => {
+		setDateOfBirth(new Date().toLocaleString());
+		setTimeout(setShowCalendar(false),0);
+	};
+	const onChange = date => setDateOfBirth(date.toLocaleString());
+
+	const closeCalendar = () => setShowCalendar(false);
 
 	return (
 		<div className={s.calendarWrapper}>
@@ -12,18 +23,14 @@ export const NewCalendar = ({setDateOfBirth, setShowCalendar}) => {
 			</div>
 			<Calendar
 				maxDate={new Date()}
-				onChange={(date) => setDateOfBirth(date.toLocaleString())}
+				onChange={onChange}
 				value={new Date()}
 			/>
 			<div className={s.closeCalendar}
-					 onClick={() => {
-						 setShowCalendar(false)
-					 }}>Применить
+					 onClick={closeCalendar}>Применить
 			</div>
-			<div className={s.closeCalendar} onClick={() => {
-				setDateOfBirth(new Date().toLocaleString());
-				setShowCalendar(false)
-			}}>Отменить
+			<div className={s.closeCalendar}
+					 onClick={setNewDate}>Отменить
 			</div>
 		</div>
 	);

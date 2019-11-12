@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import s from './UploadPhoto.module.scss';
 
 
-const UploadPhoto = ({setPhoto,setChangePhoto}) => {
+const UploadPhoto = ({setPhoto, setChangePhoto}) => {
 
 	let [newPhoto, setNewPhoto] = useState(null);
 
@@ -22,10 +22,14 @@ const UploadPhoto = ({setPhoto,setChangePhoto}) => {
 				<input
 					name='image'
 					type='file'
-					onChange={(e) => setUserPhoto(e)}
+					onChange={setUserPhoto}
 				/>
 				<div className={s.sendPhotoBtn}>
-					<button className={s.sendPhoto} onClick={sentPhoto} disabled={!newPhoto}>Upload photo</button>
+					<button className={s.sendPhoto}
+									onClick={sentPhoto}
+									disabled={!newPhoto}>
+						Upload photo
+					</button>
 				</div>
 			</div>
 		</div>

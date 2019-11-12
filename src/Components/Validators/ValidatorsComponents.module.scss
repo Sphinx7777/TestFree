@@ -60,37 +60,3 @@ input[type="text"].errorInputField::placeholder {
 	@include Placeholder($placeholderColorError);
 }
 
-
-@media screen and (max-width: 500px) {
-
-}
-
-
-/*
-.loginBtn {
-	position: absolute;
-	top: 63%;
-	left: 59%;
-	right: 10%;
-	bottom: 33%;
-	width: 37.536%;
-	height: 10%;
-	color: rgb(255, 255, 255);
-	font-family: "Source Sans Pro", sans-serif;
-	font-size: 1.36em;
-	padding: 0;
-	cursor: pointer;
-	@include bRadius(0.5rem);
-	border: none;
-	background: linear-gradient( to right bottom, rgb(0,76,108) 30%, rgb(79,182,226) 70%);
-	@media screen and (max-width: 500px) {
-		width: 30%;
-		left: 66%;
-	}
-	&:hover {
-		background: linear-gradient( to right bottom, rgb(79,182,226) 0%, rgb(0,76,108) 70%);
-	}
-	&:active {
-		border: 2px solid rgb(245, 245, 245);
-	}
-}*/

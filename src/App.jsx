@@ -3,9 +3,9 @@ import s from './App.module.scss';
 import {connect} from "react-redux";
 import {
 	setToggleShowUserStatus, setUserEditMode,
-	setDeleteUser, addNewUser,
-	setChangeUserContacts, setChangeNewDateOfBirth,
-	setEditMode
+	setDeleteUser, setChangeUserContacts,
+	setChangeNewDateOfBirth, setEditMode,
+	addNewUser
 }
 	from "./Components/Redux/usersReducer";
 import {User} from "./Components/Users/User";
@@ -26,6 +26,7 @@ export default connect(state => ({
 	users: state.usersPage.users,
 	openEditMode: state.usersPage.openEditMode,
 }), {
-	setToggleShowUserStatus, setChangeUserContacts, setEditMode,
-	addNewUser, setUserEditMode, setDeleteUser, setChangeNewDateOfBirth
+	setToggleShowUserStatus, setChangeUserContacts,
+	setEditMode, addNewUser, setUserEditMode,
+	setDeleteUser, setChangeNewDateOfBirth
 })(App);

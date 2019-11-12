@@ -7,11 +7,12 @@ import FormForNewUser from "./UserForm/FormForNewUser";
 import {UserTitle} from "./UserTitle";
 import {Header} from "../Header/Header";
 
-export const User = ({
-											 users, setChangeNewDateOfBirth, openEditMode, setEditMode,
-											 setToggleShowUserStatus, setChangeUserContacts, setUserEditMode,
-											 setDeleteUser, addNewUser
-										 }
+export const User = (
+	{
+		users, setChangeNewDateOfBirth, openEditMode, setEditMode,
+		setToggleShowUserStatus, setChangeUserContacts, setUserEditMode,
+		setDeleteUser, addNewUser
+	}
 ) => {
 
 	const [showForm, setShowForm] = useState(false);
@@ -54,31 +55,40 @@ export const User = ({
 		<>
 			<Header/>
 			<div className={s.usersWrapper}>
-				<div className={s.addUser} onClick={setFormEditMode}>
+				<div className={s.addUser}
+						 onClick={setFormEditMode}>
 					<img className={s.addUserImg}
-							 src={!showForm ? plus : arrow_left} alt=""
+							 src={!showForm ? plus : arrow_left}
+							 alt=""
 					/>
 					<span>
 				{!showForm ? 'Добавить пользователя' : 'Отменить'}
 			</span>
 				</div>
-				{showForm && <FormForNewUser {...{
-					onSubmitNewUser, setDateOfBirth,
-					setShowCalendar, showCalendar, dateOfBirth
-				}}/>
+				{showForm && <FormForNewUser {...
+					{
+						onSubmitNewUser, setDateOfBirth,
+						setShowCalendar, showCalendar, dateOfBirth
+					}}/>
 				}
 				{users && users.length && users.map(user =>
 					!user.show
 						?
 						<React.Fragment key={user.id}>
-							<UserTitle {...{user, openEditMode, setToggleShowUserStatus}}/>
+							<UserTitle {...
+								{
+									user,
+									openEditMode,
+									setToggleShowUserStatus
+								}}/>
 						</React.Fragment>
 						: <div className={s.user} key={user.id}>
-							<UserItem  {...{
-								user, setEditMode, openEditMode, setChangeNewDateOfBirth,
-								setShowForm, changePhoto, setChangePhoto, photo, setPhoto,
-								setToggleShowUserStatus, setUserEditMode, onSubmit, setDeleteUser
-							}}/>
+							<UserItem  {...
+								{
+									user, setEditMode, openEditMode, setChangeNewDateOfBirth,
+									setShowForm, changePhoto, setChangePhoto, photo, setPhoto,
+									setToggleShowUserStatus, setUserEditMode, onSubmit, setDeleteUser
+								}}/>
 						</div>
 				)}
 			</div>
@@ -86,13 +96,14 @@ export const User = ({
 				DoubleClick на имени открывает редактирование профиля.<br/>
 				DoubleClick на дате рождения открывает редактирование даты рождения.<br/>
 				DoubleClick на фото должен менять фото, но т.к. ранее я пользовался только чужими API
-				и никогда не работал с базами данных оставляя изучение бэка и node.js до момента трудоустройства паралельно
-				с работой то сохранять пока фото и данные пользователя кроме Locale storage некуда и поэтому временно все идет туда.
-				Соответственно фото не меняются т.к не достаются из storage. Освою mongoDB налажу круговорот.
-				Пока только пару часов посмотрел научился сохранять и получать простейшие типы обьектов.<br/>
-				У меня свободны только выходные поэтому ждать неделю пока освою mongoDB и хоть немного mongoose смысла нет.<br/>
-				Как пример работы с реал API, thunkMiddleware и пр. выше ссылка на проект социальной сети. Это мой основновной
-				учебный проект который я веду с нуля паралельно развитию бэка под него белорусским it-inkubatorom.<br/>
+				и никогда не работал с базами данных оставляя изучение бэка и node.js до момента трудоустройства,
+				паралельнос работой, то сохранять пока фото и данные пользователя кроме Locale storage некуда
+				и поэтому временно все идет туда.Соответственно фото не меняются т.к не достаются из storage.
+				Освою mongoDB налажу круговорот. Пока только пару часов посмотрел научился сохранять и получать
+				простейшие типы обьектов.<br/>
+				Как пример работы с реал API, thunkMiddleware и пр. выше ссылка на проект социальной сети.
+				Это мой основновнойучебный проект который я веду с нуля
+				паралельно развитию бэка под него белорусским it-inkubatorom.<br/>
 				Весь остальной функционал работает.<br/>
 				Формы валидируются как написано в задании (кроме замены фото, до освоения mongoDB).<br/>
 				Выше ссылка на второй тест, другие мои недавние проекты и репозиторий.

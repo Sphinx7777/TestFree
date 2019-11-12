@@ -54,6 +54,7 @@ if (!initialState || !initialState.users || !initialState.users.length) {
 
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
+
 		case SET_SHOW_USER_STATUS: {
 			return {
 				...state, users: state.users.map(u => {
@@ -66,6 +67,7 @@ const usersReducer = (state = initialState, action) => {
 				)
 			}
 		}
+
 		case SET_NEW_DATE_OF_BIRTH: {
 			return {
 				...state, users: state.users.map(u => {
@@ -78,6 +80,7 @@ const usersReducer = (state = initialState, action) => {
 				), openEditMode: false
 			}
 		}
+
 		case CHANGE_USER_CONTACTS: {
 			return {
 				...state, users: state.users.map(u => {
@@ -93,6 +96,7 @@ const usersReducer = (state = initialState, action) => {
 				), openEditMode: false
 			}
 		}
+
 		case SET_USER_EDIT_MODE: {
 			return {
 				...state, users: state.users.map(u => {
@@ -105,21 +109,25 @@ const usersReducer = (state = initialState, action) => {
 				), openEditMode: !state.openEditMode
 			}
 		}
+
 		case SET_DELETE_USER: {
 			return {
 				...state, users: state.users.filter(u => u.id !== action.id)
 			}
 		}
+
 		case ADD_NEW_USER: {
 			return {
 				...state, ...state.users.unshift(action.user), openEditMode: false
 			}
 		}
+
 		case EDIT_MODE: {
 			return {
 				...state, openEditMode: !state.openEditMode
 			}
 		}
+
 		default:
 			return state;
 	}
@@ -132,14 +140,6 @@ export const setUserEditMode = (id) => ({type: SET_USER_EDIT_MODE, id});
 export const setDeleteUser = (id) => ({type: SET_DELETE_USER, id});
 export const addNewUser = (user) => ({type: ADD_NEW_USER, user});
 export const setEditMode = () => ({type: EDIT_MODE});
-
-
-// export const addNewUser = (date) => {
-// 	return async (dispatch) => {
-//
-// 		await dispatch(setEditMode());
-// 		await dispatch(setEditMode());
-// }};
 
 
 export default usersReducer;

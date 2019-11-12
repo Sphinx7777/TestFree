@@ -2,7 +2,9 @@ import React from 'react';
 import s from './FormForNewUser.module.scss';
 import {Field, reduxForm} from "redux-form";
 import {InputComponent} from "./../../Validators/ValidatorsComponents";
-import {Email, emptyField, maxSize, phoneNumber, TextAndNumber} from "../../Validators/CheckComponent";
+import {
+	Email, emptyField, maxSize, phoneNumber, TextAndNumber
+} from "../../Validators/CheckComponent";
 import {NewCalendar} from "../../Others/Calendar/NewCalendar";
 
 
@@ -15,31 +17,30 @@ const FormForNewUser = (props) => {
 
 	return (
 		<div className={s.settingsFormWrapper}>
-
 			<form onSubmit={handleSubmit(onSubmitNewUser)}>
 				<div className={s.settingsForm}>
 					<Field
 						name='name'
 						type='text'
 						placeholder='Login'
-						component={InputComponent}
 						label='Login'
+						component={InputComponent}
 						validate={[emptyField, TextAndNumber]}
 					/>
 					<Field
 						name='email'
 						type='email'
 						placeholder='Email'
-						component={InputComponent}
 						label='Email'
+						component={InputComponent}
 						validate={[emptyField, Email]}
 					/>
 					<Field
 						name='phone'
 						type='tel'
 						placeholder='Phone'
-						component={InputComponent}
 						label='Phone'
+						component={InputComponent}
 						validate={[emptyField, phoneNumber]}
 					/>
 					<Field
@@ -47,20 +48,29 @@ const FormForNewUser = (props) => {
 						type='file'
 						value=''
 						accept='image/jpeg, image/png,image/jpg'
-						component={InputComponent}
 						label='Photo'
+						component={InputComponent}
 						validate={[maxSize]}
 					/>
 					<div onDoubleClick={() => setShowCalendar(true)}>
 						<div>Дата рождения</div>
-						<div>{dateOfBirth && dateOfBirth.toString().slice(0, 10)}</div>
+						<div>{dateOfBirth &&
+						dateOfBirth.toString().slice(0, 10)}
+						</div>
 					</div>
 					<div className={s.sendBtns}>
-						<button className={s.sendBtn} type="submit" disabled={pristine || submitting}>Добавить</button>
+						<button className={s.sendBtn}
+										type="submit"
+										disabled={pristine || submitting}>
+							Добавить
+						</button>
 					</div>
 				</div>
 			</form>
-			{showCalendar && <NewCalendar {...{setDateOfBirth, dateOfBirth, setShowCalendar}}/>}
+			{showCalendar && <NewCalendar {...
+				{
+					setDateOfBirth, dateOfBirth, setShowCalendar
+				}}/>}
 		</div>
 	)
 };

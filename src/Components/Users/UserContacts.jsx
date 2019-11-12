@@ -4,13 +4,16 @@ import mail from './../images/mail.ico'
 import phone_2 from './../images/phone_2.png'
 
 
-export const UserContacts =({user, setUserEditMode}) => {
+export const UserContacts = ({user, setUserEditMode}) => {
+
+	const toggleUserEditMode = () => setUserEditMode(user.id);
 
 	return (
 		<>
 			<div className={s.userContacts}>
-				<div className={s.userName} title='DoubleClick for edit'
-						 onDoubleClick={() =>  setUserEditMode(user.id)}>
+				<div className={s.userName}
+						 title='DoubleClick for edit'
+						 onDoubleClick={toggleUserEditMode}>
 					{user.name}
 				</div>
 				<a className={s.contactItem}

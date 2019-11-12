@@ -2,8 +2,11 @@ import React from 'react';
 import s from './User.module.scss';
 
 
-export const UserAge =({user, setEditMode, openEditMode, setDeleteUser,
-													showNewCalendar, setShowNewCalendar}) => {
+export const UserAge = (
+	{
+		user, setEditMode, openEditMode, setDeleteUser,
+		showNewCalendar, setShowNewCalendar
+	}) => {
 
 	const newDate = new Date().getFullYear().toString();
 	const yearOfBirth = user.dateOfBirth.slice(6, 10);
@@ -11,11 +14,19 @@ export const UserAge =({user, setEditMode, openEditMode, setDeleteUser,
 		return +newDate - +yearOfBirth
 	};
 
+	const toggleShowNewCalendar = () => {
+		!openEditMode && 
+		setEditMode(!openEditMode) && 
+		setShowNewCalendar(!showNewCalendar)
+	};
+	
+	const deleteUser = () => setDeleteUser(user.id);
 
 	return (
 		<>
-			<div className={s.userAge} title='DoubleClick for edit'
-					 onDoubleClick={() => !openEditMode && setEditMode(!openEditMode) && setShowNewCalendar(!showNewCalendar)}>
+			<div className={s.userAge} 
+					 title='DoubleClick for edit'
+					 onDoubleClick={toggleShowNewCalendar}>
 						<span>
 						Дата рождения
 					</span>
@@ -25,7 +36,8 @@ export const UserAge =({user, setEditMode, openEditMode, setDeleteUser,
 				<span>
 						Возраст : {age()}
 					</span>
-				<span className={s.delUser} onClick={() => setDeleteUser(user.id)}>
+				<span className={s.delUser} 
+							onClick={deleteUser}>
 						Удалить
 					</span>
 			</div>

@@ -8,11 +8,12 @@ import {UserContacts} from "./UserContacts";
 import {UserAge} from "./UserAge";
 
 
-export const UserItem = ({
-													 user, setEditMode, openEditMode, setChangePhoto, changePhoto, photo,
-													 setChangeNewDateOfBirth, setPhoto, setToggleShowUserStatus,
-													 setUserEditMode, onSubmit, setDeleteUser
-												 }) => {
+export const UserItem = (
+	{
+		user, setEditMode, openEditMode, setChangePhoto, changePhoto, photo,
+		setChangeNewDateOfBirth, setPhoto, setToggleShowUserStatus,
+		setUserEditMode, onSubmit, setDeleteUser
+	}) => {
 
 	const [newDate, setNewDate] = useState(new Date());
 	const [showNewCalendar, setShowNewCalendar] = useState(false);
@@ -20,32 +21,54 @@ export const UserItem = ({
 	const setNewDateOfBirth = (id) => {
 		setChangeNewDateOfBirth({id, newDate})
 	};
+	const toggleShowTitle = () => {
+		!openEditMode && setToggleShowUserStatus(user.id)
+	};
 
 	return (
 		<>
 			<>
 				<div className={s.userPhoto}>
-					<img onDoubleClick={() => !openEditMode && setChangePhoto(!changePhoto)} className={s.photo}
+					<img className={s.photo}
+							 onDoubleClick={() => !openEditMode && setChangePhoto(!changePhoto)}
 							 title='DoubleClick for edit'
-							 src={user.photoUrl && typeof user.photoUrl !== "object" ? user.photoUrl : avatar} alt=""/>
-					<span className={s.closeUserShow} onClick={() => !openEditMode && setToggleShowUserStatus(user.id)}>
+							 src={user.photoUrl && typeof user.photoUrl !== "object"
+								 ? user.photoUrl
+								 : avatar}
+							 alt=""/>
+					<span className={s.closeUserShow}
+								onClick={toggleShowTitle}>
 						Свернуть
 					</span>
 				</div>
-				<UserContacts {...{user, openEditMode, setUserEditMode}}/>
-				<UserAge {...{user, setEditMode, openEditMode, setDeleteUser, showNewCalendar, setShowNewCalendar}} />
+				<UserContacts {...
+					{
+						user, openEditMode, setUserEditMode
+					}}/>
+				<UserAge {...
+					{
+						user, setEditMode, openEditMode, setDeleteUser,
+						showNewCalendar, setShowNewCalendar
+					}} />
 			</>
-			{changePhoto && <UploadPhoto {...{photo, setPhoto, openEditMode, setChangePhoto}}/>}
-			{showNewCalendar &&
-			<NewDateOfBirthCalendar {...{
-				id: user.id,
-				setEditMode,
-				setNewDateOfBirth,
-				setShowCalendar: setShowNewCalendar,
-				setDateOfBirth: setNewDate
-			}}/>
+			{changePhoto &&
+			<UploadPhoto {...
+				{
+					photo, setPhoto, openEditMode, setChangePhoto
+				}}/>}
+			{showNewCalendar && <NewDateOfBirthCalendar {...
+				{
+					id: user.id,
+					setEditMode,
+					setNewDateOfBirth,
+					setShowCalendar: setShowNewCalendar,
+					setDateOfBirth: setNewDate
+				}}/>
 			}
-			{user.editMode && <SettingsReduxForm user={user} setUserEditMode={setUserEditMode} onSubmit={onSubmit}/>}
+			{user.editMode && <SettingsReduxForm {...
+				{
+					user, setUserEditMode, onSubmit
+				}}/>}
 		</>
 	)
 };

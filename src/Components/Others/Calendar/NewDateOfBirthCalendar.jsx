@@ -4,8 +4,21 @@ import s from './NewDateOfBirthCalendar.module.scss';
 
 
 export const NewDateOfBirthCalendar = (
-	{id, setEditMode, setNewDateOfBirth, setDateOfBirth, setShowCalendar}
-) => {
+	{
+		id, setEditMode, setNewDateOfBirth, setDateOfBirth, setShowCalendar
+	}) => {
+
+	const onChange = date => setDateOfBirth(date.toLocaleString());
+
+	const setNewDateAndClose = () => {
+		setNewDateOfBirth(id);
+		setTimeout(setShowCalendar(false), 0);
+	};
+
+	const closeEditModeAndCalendar = () => {
+		setEditMode(false);
+		setShowCalendar(false);
+	};
 
 	return (
 		<div className={s.calendarWrapper}>
@@ -15,18 +28,16 @@ export const NewDateOfBirthCalendar = (
 				</div>
 				<Calendar
 					maxDate={new Date()}
-					onChange={(date) => setDateOfBirth(date.toLocaleString())}
+					onChange={onChange}
 					value={new Date()}
 				/>
-				<div className={s.closeCalendar} onClick={() => {
-					setNewDateOfBirth(id);
-					setShowCalendar(false);
-				}}>Применить
+				<div className={s.closeCalendar}
+						 onClick={setNewDateAndClose}>
+					Применить
 				</div>
-				<div className={s.closeCalendar} onClick={() => {
-					setEditMode(false);
-					setShowCalendar(false);
-				}}>Отменить
+				<div className={s.closeCalendar}
+						 onClick={closeEditModeAndCalendar}>
+					Отменить
 				</div>
 			</div>
 		</div>

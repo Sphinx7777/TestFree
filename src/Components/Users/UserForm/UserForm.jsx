@@ -16,32 +16,39 @@ const UserForm = (props) => {
 						name='name'
 						type='text'
 						placeholder='Login'
-						component={InputComponent}
 						label='Login'
+						component={InputComponent}
 						validate={[emptyField, TextAndNumber]}
 					/>
 					<Field
 						name='email'
 						type='email'
 						placeholder='Email'
-						component={InputComponent}
 						label='Email'
+						component={InputComponent}
 						validate={[emptyField, Email]}
 					/>
 					<Field
 						name='phone'
 						type='tel'
 						placeholder='Phone'
-						component={InputComponent}
 						label='Phone'
+						component={InputComponent}
 						validate={[emptyField, phoneNumber]}
 					/>
 					<div className={s.sendBtns}>
-						<button className={s.sendBtn} type="submit" disabled={pristine || submitting}>To send</button>
+						<button className={s.sendBtn}
+										type="submit"
+										disabled={pristine || submitting}>
+							To send
+						</button>
 					</div>
 				</div>
 			</form>
-			<span className={s.closeForm} onClick={() => setUserEditMode(user.id)}>X</span>
+			<span className={s.closeForm}
+						onClick={() => setUserEditMode(user.id)}>
+				X
+			</span>
 		</div>
 	)
 };
